@@ -154,7 +154,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+  useController: 1
   crossHair: {fileID: 1801687782}
+  arrowPrefab: {fileID: 5555945091613353478, guid: 3724d3a72348cc44b816f7ceaddbee2f, type: 3}
+  shootingRange: 2
+  AimRange: 0
 --- !u!212 &18439709
 SpriteRenderer:
   m_ObjectHideFlags: 0
