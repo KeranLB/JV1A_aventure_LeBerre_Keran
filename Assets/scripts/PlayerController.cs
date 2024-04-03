@@ -7,17 +7,25 @@ public class PlayerController : MonoBehaviour
 {
     public int playerId = 0;
     public bool useController;
-    //public Animator animator;
+    public Animator animator;
     public GameObject crossHair;
     public GameObject arrowPrefab;
     public float shootingRange;
     public float AimRange;
+    public int moveSpeed;
 
     private Player player;
     private Vector3 movement;
     private Vector3 aim;
     private bool isAiming;
     private bool EndAiming;
+
+    // inventaire
+    private bool gotCrossbow;
+    private bool gotKatana;
+    private float numArrow;
+    private float numPotion;
+
     private void Awake()
     {
         player = ReInput.players.GetPlayer(playerId);
@@ -30,38 +38,38 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         ProcessInputs();
-        AimAndShoot();
-        //Annimation()
+        Animation();
         Move();
+        AimAndShoot();
     }
 
-    /*
-    private void Annimation()
+    
+    private void Animation()
     {
-        bottomAnimator.SetFloat("Horizontal", movement.x);
-        bottomAnimator.SetFloat("Vertical", movement.y)
-        bottomAnimator.SetFloat("Magnitude", movement.magnitude);
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Magnitude", movement.magnitude);
 
-        topAnimator.SetFloat("Horizontal", movement.x);
-        topAnimator.SetFloat("Vertical", movement.y)
-        topAnimator.SetFloat("Magnitude", movement.magnitude);
+        //topAnimator.SetFloat("Horizontal", movement.x);
+        //topAnimator.SetFloat("Vertical", movement.y)
+        //topAnimator.SetFloat("Magnitude", movement.magnitude);
 
-        topAnimator.SetFloat("AimHorizontal", movement.x);
-        topAnimator.SetFloat("AimVertical", movement.y)
-        topAnimator.SetFloat("Aim", isAiming);
+        //topAnimator.SetFloat("AimHorizontal", movement.x);
+        //topAnimator.SetFloat("AimVertical", movement.y)
+        //topAnimator.SetFloat("Aim", isAiming);
         
     }
-    */
+    
 
     private void Move()
     {
-        transform.position = transform.position + movement * Time.deltaTime;
+        transform.position = transform.position + movement * Time.deltaTime * moveSpeed;
     }
     private void AimAndShoot()
     {
         Vector2 shootingDirection = new Vector2(aim.x, aim.y);
 
-        if (aim.magnitude > 0.0f)
+        if ((aim.magnitude > 0.0f) & (isAiming == true))
         {
             crossHair.transform.localPosition = aim * AimRange;
             crossHair.SetActive(true);
@@ -87,8 +95,8 @@ public class PlayerController : MonoBehaviour
             movement = new Vector3(player.GetAxis("MoveHorizontal"), player.GetAxis("MoveVertical"), 0.0f);
             aim = new Vector3(player.GetAxis("AimHorizontal"), player.GetAxis("AimVertical"), 0.0f);
             aim.Normalize();
-            isAiming = player.GetButton("Fire");
-            EndAiming = player.GetButtonDown("Fire");
+            isAiming = player.GetButton("Aim");
+            EndAiming = player.GetButtonUp("Fire");
         }
         else
         {
@@ -99,7 +107,7 @@ public class PlayerController : MonoBehaviour
             {
                 aim.Normalize();
             }
-            isAiming = Input.GetButton("Fire1");
+            isAiming = Input.GetButton("Aim");
             EndAiming = Input.GetButtonUp("Fire1");
         }
 
