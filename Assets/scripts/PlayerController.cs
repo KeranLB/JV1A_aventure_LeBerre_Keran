@@ -23,13 +23,15 @@ public class PlayerController : MonoBehaviour
     // inventaire
     private bool gotCrossbow;
     private bool gotKatana;
-    private float numArrow;
+    public float numArrow;
     private float numPotion;
 
     private void Awake()
     {
+        // initialise le player pour les inputs lier à rewired
         player = ReInput.players.GetPlayer(playerId);
 
+        // cache et bloque le curseur de la souris en game
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -63,26 +65,33 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        // déplace le personnage
         transform.position = transform.position + movement * Time.deltaTime * moveSpeed;
     }
     private void AimAndShoot()
     {
         Vector2 shootingDirection = new Vector2(aim.x, aim.y);
 
+        // active me crossHair et le déplace en fonction de où l'on vise
         if ((aim.magnitude > 0.0f) & (isAiming == true))
         {
             crossHair.transform.localPosition = aim * AimRange;
             crossHair.SetActive(true);
 
             shootingDirection.Normalize();
-            if (EndAiming)
+
+            // créer un projectile et l'oriente dans le sens du tir
+            if ((EndAiming) & (numArrow > 0))
             {
                 GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
                 arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * 3.0f;
                 arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
                 Destroy(arrow, shootingRange);
+                Debug.Log("Vous avez tiré.");
             }
         }
+
+        // désactive le crossHair quand il n'est pas utiliser
         else
         {
             crossHair.SetActive(false);
@@ -90,6 +99,7 @@ public class PlayerController : MonoBehaviour
     }
     private void ProcessInputs()
     {
+        // déplacement manette
         if (useController)
         {
             movement = new Vector3(player.GetAxis("MoveHorizontal"), player.GetAxis("MoveVertical"), 0.0f);
@@ -98,6 +108,8 @@ public class PlayerController : MonoBehaviour
             isAiming = player.GetButton("Aim");
             EndAiming = player.GetButtonUp("Fire");
         }
+
+        // déplacement clavier & souris
         else
         {
             movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
@@ -111,9 +123,20 @@ public class PlayerController : MonoBehaviour
             EndAiming = Input.GetButtonUp("Fire1");
         }
 
+        // normalise le déplacement sur la trajectoire en diagonal
         if (movement.magnitude > 1.0f)
         {
             movement.Normalize();
         }
     }
+    /*
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Collectible"))
+        {
+            Debug.Log("vous avez ramasser une flèche.");
+            Destroy(collision.gameObject);
+        }
+    }
+    */
 }

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject, 0.1f);   
+        if (collision.CompareTag("Player"))
+        {
+            collision.GetComponent<PlayerController>().numArrow += 1;
+            Destroy(gameObject);
+        }
+          
     }
 }
