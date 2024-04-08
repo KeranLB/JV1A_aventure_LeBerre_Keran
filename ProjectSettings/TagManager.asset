@@ -7,6 +7,7 @@ TagManager:
   - Projectile
   - Collectible
   - player
+  - tilemap
   layers:
   - Default
   - TransparentFX

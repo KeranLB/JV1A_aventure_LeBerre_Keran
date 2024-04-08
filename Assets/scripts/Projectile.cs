@@ -10,10 +10,6 @@ public class Projectile : MonoBehaviour
         {
             collision.GetComponent<PlayerController>().numArrow -= 1;
         }
-        else
-        {
-            Debug.Log("vous avez touché.");
-        }
         
     }
 }

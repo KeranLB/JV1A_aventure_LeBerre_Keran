@@ -11,23 +11,27 @@ public class cam : MonoBehaviour
 
     float startZ;
 
-    //public Camera camera;
-
 
     Vector2 travel => (Vector2)Subject.transform.position - startPosition;
 
-    // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.position;
         startZ = transform.localPosition.z;
-        //camera.Size = 5;
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector2 newPos = startPosition + travel;
         transform.position = new Vector3(newPos.x, newPos.y, startZ);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("tilemap"))
+        {
+            Debug.Log("votre caméra est sortie de la zone de jeu.");
+        }
     }
 }
