@@ -8,8 +8,11 @@ public class PlayerController : MonoBehaviour
     public int playerId = 0;
     public bool useController;
     public Animator animator;
+    public Animator animatorArc;
+    public Animator animatorKatna;
     public GameObject crossHair;
     public GameObject arrowPrefab;
+    public GameObject bombePrefab;
     public float shootingRange;
     public float AimRange;
     public int moveSpeed;
@@ -17,14 +20,20 @@ public class PlayerController : MonoBehaviour
     private Player player;
     private Vector3 movement;
     private Vector3 aim;
-    private bool isAiming;
-    private bool EndAiming;
+    private bool isAimingArc;
+    private bool EndAimingArc;
+    private bool isAimingBombe;
+    private bool EndAimingBombe;
+    private bool isAttacking;
 
     // inventaire
-    private bool gotCrossbow;
-    private bool gotKatana;
+    private bool gotArc;
+    public bool gotKatana;
+    public bool gotKey;
     public float numArrow;
-    private float numPotion;
+    public int numBombe;
+    public int numPotion;
+
 
     private void Awake()
     {
@@ -36,7 +45,16 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    
+    private void Start()
+    {
+        gotArc = false;
+        gotKatana = false;
+        numArrow = 0;
+        numBombe = 0;
+        numPotion = 0;
+    }
+
+
     void Update()
     {
         ProcessInputs();
@@ -60,6 +78,10 @@ public class PlayerController : MonoBehaviour
         //topAnimator.SetFloat("AimVertical", movement.y)
         //topAnimator.SetFloat("Aim", isAiming);
         
+        if ((gotKatana == true) && (isAttacking == true))
+        {
+            //animation attaque
+        }
     }
     
 
@@ -72,22 +94,34 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 shootingDirection = new Vector2(aim.x, aim.y);
 
-        // active me crossHair et le déplace en fonction de où l'on vise
-        if ((aim.magnitude > 0.0f) & (isAiming == true))
+        // active me crossHair et le déplace en fonction de où l'on vise et si l'on est en train de viser.
+        if ((aim.magnitude > 0.0f) && ((isAimingArc == true) || (isAimingBombe == true)) )
         {
             crossHair.transform.localPosition = aim * AimRange;
             crossHair.SetActive(true);
 
             shootingDirection.Normalize();
 
-            // créer un projectile et l'oriente dans le sens du tir
-            if ((EndAiming) & (numArrow > 0))
+
+            // créer une flèche et l'oriente dans le sens du tir
+            if ((EndAimingArc) & (numArrow > 0))
             {
+                numArrow -= 1;
                 GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
                 arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * 3.0f;
                 arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
                 Destroy(arrow, shootingRange);
                 Debug.Log("Vous avez tiré.");
+            }
+
+            if ((EndAimingBombe == true) & (numBombe > 0))
+            {
+                numBombe -= 1;
+                GameObject bombe = Instantiate(bombePrefab, transform.position, Quaternion.identity);
+                bombe.GetComponent<Rigidbody2D>().velocity = shootingDirection * 3.0f;
+                bombe.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
+                Destroy(bombe, shootingRange);
+                Debug.Log("Vous avez lancer une bombe.");
             }
         }
 
@@ -105,10 +139,17 @@ public class PlayerController : MonoBehaviour
             movement = new Vector3(player.GetAxis("MoveHorizontal"), player.GetAxis("MoveVertical"), 0.0f);
             aim = new Vector3(player.GetAxis("AimHorizontal"), player.GetAxis("AimVertical"), 0.0f);
             aim.Normalize();
-            isAiming = player.GetButton("Aim");
-            EndAiming = player.GetButtonUp("Fire");
-        }
+            if (gotArc == true)
+            {
+                isAimingArc = player.GetButton("AimArc");
+                EndAimingArc = player.GetButtonUp("Fire");
+            }
 
+            isAimingBombe = player.GetButton("AimBombe");
+            EndAimingBombe = player.GetButtonUp("LancerBombe");
+            isAttacking = player.GetButtonDown("Attaque");
+        }
+        
         // déplacement clavier & souris
         else
         {
@@ -119,24 +160,66 @@ public class PlayerController : MonoBehaviour
             {
                 aim.Normalize();
             }
-            isAiming = Input.GetButton("Aim");
-            EndAiming = Input.GetButtonUp("Fire1");
+            if (gotArc == true)
+            {
+                isAimingArc = Input.GetButton("AimArc");
+                EndAimingArc = Input.GetButtonUp("Fire");
+            }
+            isAimingBombe = Input.GetButton("AimBombe");
+            EndAimingBombe = Input.GetButtonUp("LancerBombe");
+            isAttacking = Input.GetButtonDown("Attaque");
         }
-
+        
         // normalise le déplacement sur la trajectoire en diagonal
         if (movement.magnitude > 1.0f)
         {
             movement.Normalize();
         }
     }
-    /*
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Collectible"))
+        if (collision.CompareTag("Arrow"))
         {
             Debug.Log("vous avez ramasser une flèche.");
             Destroy(collision.gameObject);
+            numArrow += 1;
+        }
+
+        if (collision.CompareTag("Bombe"))
+        {
+            Debug.Log("vous avez ramasser une bombe.");
+            Destroy(collision.gameObject);
+            numBombe = numBombe + 1;
+        }
+
+        if (collision.CompareTag("Potion"))
+        {
+            Debug.Log("vous avez ramasser une potion de soin.");
+            Destroy(collision.gameObject);
+            numPotion += 1;
+        }
+
+        if (collision.CompareTag("Arc"))
+        {
+            Debug.Log("vous avez ramasser un Arc.");
+            Destroy(collision.gameObject);
+            gotArc = true;
+        }
+
+        if (collision.CompareTag("Katana"))
+        {
+            Debug.Log("vous avez ramasser un Katana.");
+            Destroy(collision.gameObject);
+            gotKatana = true;
+        }
+
+        if (collision.CompareTag("key"))
+        {
+            Debug.Log("vous avez ramasser une clé.");
+            Destroy(collision.gameObject);
+            gotKey = true;
         }
     }
-    */
+    
 }

@@ -5,9 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Projectile
-  - Collectible
   - player
   - tilemap
+  - Arrow
+  - Arc
+  - Katana
+  - Bombe
+  - Potion
+  - key
   layers:
   - Default
   - TransparentFX
