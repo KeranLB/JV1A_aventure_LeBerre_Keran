@@ -13,6 +13,7 @@ TagManager:
   - Bombe
   - Potion
   - key
+  - ennemi
   layers:
   - Default
   - TransparentFX

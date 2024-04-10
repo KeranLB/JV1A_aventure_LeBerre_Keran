@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     private Player player;
     private Vector3 movement;
     private Vector3 aim;
-    private int health;
 
 
     private bool isAimingArc;
@@ -26,6 +25,11 @@ public class PlayerController : MonoBehaviour
     private bool isAimingBombe;
     private bool EndAimingBombe;
     private bool isAttacking;
+
+    // UI 
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
 
     // inventaire
     private bool gotArc;
@@ -57,6 +61,9 @@ public class PlayerController : MonoBehaviour
         numArrow = 0;
         numBombe = 0;
         numPotion = 0;
+        currentHealth = maxHealth;
+        healthBar.SetMAxHealth(maxHealth);
+
     }
 
 
@@ -66,8 +73,14 @@ public class PlayerController : MonoBehaviour
         Animation();
         Move();
         AimAndShoot();
+        ContreAndAttack();
     }
 
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+    }
     
     private void Animation()
     {
@@ -85,7 +98,7 @@ public class PlayerController : MonoBehaviour
         transform.position = transform.position + movement * Time.deltaTime * moveSpeed;
     }
 
-    private void ConterAndAttack()
+    private void ContreAndAttack()
     {
         if ((gotKatana == true) && (isAttacking == true))
         {
@@ -251,12 +264,13 @@ public class PlayerController : MonoBehaviour
             Debug.Log("vous avez ramasser une clé.");
             Destroy(collision.gameObject);
             gotKey = true;
-        
-        if (collision.CompareTag("Ennemi"))
-            {
-                health -= 1;
-            }
         }
+        if (collision.CompareTag("ennemi"))
+            {
+                TakeDamage(25);
+                Destroy(collision.gameObject);
+            }
+        
     }
     
 }
