@@ -5,26 +5,39 @@ using Rewired;
 
 public class PlayerController : MonoBehaviour
 {
-    public int playerId = 0;
+    // inputs
     public bool useController;
+
+    // animation
     public Animator animator;
+
+    // gameObject
     public GameObject crossHair;
     public GameObject arrowPrefab;
     public GameObject bombePrefab;
+
+
+    // rewired
+    private Player player;
+    public int playerId = 0;
+
+    //deplacement
+    private Vector3 movement;
+    private Vector3 aim;
+
     public float shootingRange;
     public float AimRange;
     public int moveSpeed;
 
-    private Player player;
-    private Vector3 movement;
-    private Vector3 aim;
-
-
+    // attaque
     private bool isAimingArc;
     private bool EndAimingArc;
+
     private bool isAimingBombe;
     private bool EndAimingBombe;
+
     private bool isAttacking;
+    private bool isParing;
 
     // UI 
     public int maxHealth = 100;
@@ -34,9 +47,12 @@ public class PlayerController : MonoBehaviour
     // inventaire
     private bool gotArc;
     public bool gotKatana;
-    private bool isEquipKatana;
-    private bool isEquipArc;
     public bool gotKey;
+
+    private bool isChanging;
+    public bool isEquipKatana;
+    public bool isEquipArc;
+    
     public float numArrow;
     public int numBombe;
     public int numPotion;
@@ -63,34 +79,48 @@ public class PlayerController : MonoBehaviour
         numPotion = 0;
         currentHealth = maxHealth;
         healthBar.SetMAxHealth(maxHealth);
-
     }
 
 
     void Update()
     {
         ProcessInputs();
+        ChangementArme();
         Animation();
         Move();
         AimAndShoot();
         ContreAndAttack();
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
-    
+
     private void Animation()
     {
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Magnitude", movement.magnitude);
-        
 
+        if (isEquipArc == true)
+        {
+            animator.SetBool("EquipArc", true);
+            animator.SetBool("EquipKatana", false);
+        }
+
+        if (isEquipKatana == true)
+        {
+            animator.SetBool("EquipKatana", true);
+            animator.SetBool("EquipArc", false);
+        }
     }
-    
+
 
     private void Move()
     {
@@ -100,9 +130,14 @@ public class PlayerController : MonoBehaviour
 
     private void ContreAndAttack()
     {
-        if ((gotKatana == true) && (isAttacking == true))
+        if (isParing == true)
         {
-            //animation attaque
+            Debug.Log("Tu es en train de parer.");
+        }
+
+        else if (isAttacking == true)
+        {
+            Debug.Log("tu as attaquer avec ton Katana.");
         }
     }
     private void AimAndShoot()
@@ -110,7 +145,7 @@ public class PlayerController : MonoBehaviour
         Vector2 shootingDirection = new Vector2(aim.x, aim.y);
 
         // active le crossHair et le déplace en fonction de où l'on vise et si l'on est en train de viser.
-        if ((aim.magnitude > 0.0f) && ((isAimingArc == true) || (isAimingBombe == true)) )
+        if ((aim.magnitude > 0.0f) && ((isAimingArc == true) || (isAimingBombe == true)))
         {
             crossHair.transform.localPosition = aim * AimRange;
             crossHair.SetActive(true);
@@ -146,6 +181,28 @@ public class PlayerController : MonoBehaviour
             crossHair.SetActive(false);
         }
     }
+
+    private void ChangementArme()
+    {
+        if (isChanging == true)
+        {
+            // équipe le katana
+            if ((gotKatana == true) && (isEquipArc == true))
+            {
+                isEquipKatana = true;
+                isEquipArc = false;
+            }
+
+            // équipe l'arc
+            else if ((gotArc == true) && (isEquipKatana == true))
+            {
+                isEquipArc = true;
+                isEquipKatana = false;
+            }
+        }
+
+
+    }
     private void ProcessInputs()
     {
         // déplacement manette
@@ -154,11 +211,19 @@ public class PlayerController : MonoBehaviour
             movement = new Vector3(player.GetAxis("MoveHorizontal"), player.GetAxis("MoveVertical"), 0.0f);
             aim = new Vector3(player.GetAxis("AimHorizontal"), player.GetAxis("AimVertical"), 0.0f);
             aim.Normalize();
-            
+
+            isChanging = player.GetButtonDown("ChangementArme");
+
             if (isEquipArc == true)
             {
                 isAimingArc = player.GetButton("AimArc");
                 EndAimingArc = player.GetButtonDown("Fire");
+            }
+
+            if (isEquipKatana == true)
+            {
+                isAttacking = player.GetButtonDown("Attaque");
+                isParing = player.GetButton("Parade");
             }
 
             if (isAimingArc == false)
@@ -166,29 +231,8 @@ public class PlayerController : MonoBehaviour
                 isAimingBombe = player.GetButton("AimBombe");
                 EndAimingBombe = player.GetButtonDown("LancerBombe");
             }
-
-            
-            isAttacking = player.GetButtonDown("Attaque");
-        
-            // équipe le katana
-            if ( (player.GetButton("EquipKatana")) && (gotKatana == true) )
-            {
-                isEquipKatana = true;
-                isEquipArc = false;
-                animator.SetBool("EquipKatana", true);
-                animator.SetBool("EquipArc", false);
-            }
-
-            // équipe l'arc
-            if ((player.GetButton("EquipArc")) && (gotArc == true))
-            {
-                isEquipArc = true;
-                isEquipKatana = false;
-                animator.SetBool("EquipArc", true);
-                animator.SetBool("EquipKatana", false);
-            }
         }
-        
+
         // déplacement clavier & souris
         else
         {
@@ -208,14 +252,14 @@ public class PlayerController : MonoBehaviour
             EndAimingBombe = Input.GetButtonUp("LancerBombe");
             isAttacking = Input.GetButtonDown("Attaque");
         }
-        
+
         // normalise le déplacement sur la trajectoire en diagonal
         if (movement.magnitude > 1.0f)
         {
             movement.Normalize();
         }
     }
-    
+        
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // collision avec une fleche collectible
@@ -248,6 +292,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("vous avez ramasser un Arc.");
             Destroy(collision.gameObject);
             gotArc = true;
+            isEquipArc = true;
+            isEquipKatana = false;
         }
 
         // collision avec le katana collectible
@@ -256,6 +302,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("vous avez ramasser un Katana.");
             Destroy(collision.gameObject);
             gotKatana = true;
+            isEquipKatana = true;
+            isEquipArc = false;
         }
 
         // collision avec clé collectible
@@ -265,12 +313,6 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             gotKey = true;
         }
-        if (collision.CompareTag("ennemi"))
-            {
-                TakeDamage(25);
-                Destroy(collision.gameObject);
-            }
-        
     }
     
 }
