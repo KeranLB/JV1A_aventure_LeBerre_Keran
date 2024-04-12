@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Projectile
   - player
   - tilemap
   - Arrow
@@ -14,6 +13,8 @@ TagManager:
   - Potion
   - key
   - ennemi
+  - BombeProjectil
+  - FlecheProjectil
   layers:
   - Default
   - TransparentFX

@@ -151,10 +151,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc67f4a545bfb054084e432f53c36cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  speed: 1
+  distanceBetween: 0
+  PrefabFleche: {fileID: 9150738511003664626, guid: f835e6bb2feef7e459cac260e43b298a, type: 3}
+  PrefabPotion: {fileID: 5854490632505903013, guid: e71cc05959e99944ebfacaace7122601, type: 3}
+  PrefabBombe: {fileID: 5300106562604480805, guid: 198610c5aa1827644bc641993fc30e70, type: 3}
   damage: 1
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 8846590480575944882}
+  gotShield: 0
 --- !u!50 &7000093099687209935
 Rigidbody2D:
   serializedVersion: 4
@@ -167,7 +174,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

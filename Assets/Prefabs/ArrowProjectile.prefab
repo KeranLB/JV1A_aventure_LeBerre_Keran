@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 281807925958371581}
   - component: {fileID: -8996801046121068460}
   - component: {fileID: -7672243553527217536}
+  - component: {fileID: -1813566030736828202}
   m_Layer: 0
   m_Name: ArrowProjectile
-  m_TagString: Projectile
+  m_TagString: FlecheProjectil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5555945091613353478}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.502, y: -0.501, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -158,3 +159,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.41351807, y: 0.0975256}
   m_EdgeRadius: 0
+--- !u!114 &-1813566030736828202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5555945091613353478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc5b2ef8594d654d9b309981c1a81ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

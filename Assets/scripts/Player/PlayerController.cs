@@ -39,10 +39,7 @@ public class PlayerController : MonoBehaviour
     private bool isAttacking;
     private bool isParing;
 
-    // UI 
-    public int maxHealth = 100;
-    public int currentHealth;
-    public HealthBar healthBar;
+
 
     // inventaire
     private bool gotArc;
@@ -55,7 +52,6 @@ public class PlayerController : MonoBehaviour
     
     public float numArrow;
     public int numBombe;
-    public int numPotion;
 
 
     private void Awake()
@@ -76,9 +72,6 @@ public class PlayerController : MonoBehaviour
         isEquipKatana = false;
         numArrow = 0;
         numBombe = 0;
-        numPotion = 0;
-        currentHealth = maxHealth;
-        healthBar.SetMAxHealth(maxHealth);
     }
 
 
@@ -90,17 +83,9 @@ public class PlayerController : MonoBehaviour
         Move();
         AimAndShoot();
         ContreAndAttack();
-        if (currentHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
     }
 
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
-    }
+
 
     private void Animation()
     {
@@ -213,6 +198,7 @@ public class PlayerController : MonoBehaviour
             aim.Normalize();
 
             isChanging = player.GetButtonDown("ChangementArme");
+            gameObject.GetComponent<PlayerHealth>().isHealing = player.GetButtonDown("Heal");
 
             if (isEquipArc == true)
             {
@@ -239,6 +225,7 @@ public class PlayerController : MonoBehaviour
             movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
             Vector3 mouseMovement = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0.0f);
             aim += mouseMovement;
+            
             if (aim.magnitude > AimRange)
             {
                 aim.Normalize();
@@ -251,6 +238,7 @@ public class PlayerController : MonoBehaviour
             isAimingBombe = Input.GetButton("AimBombe");
             EndAimingBombe = Input.GetButtonUp("LancerBombe");
             isAttacking = Input.GetButtonDown("Attaque");
+            
         }
 
         // normalise le déplacement sur la trajectoire en diagonal
@@ -276,14 +264,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("vous avez ramasser une bombe.");
             Destroy(collision.gameObject);
             numBombe = numBombe + 1;
-        }
-
-        // collision avec une potion collectible
-        if (collision.CompareTag("Potion"))
-        {
-            Debug.Log("vous avez ramasser une potion de soin.");
-            Destroy(collision.gameObject);
-            numPotion += 1;
         }
 
         // collision avec l'arc collectible
