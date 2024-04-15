@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 50cac051d787a6f4ea7d36c40b983a03
+guid: b53e0028365540a4e8c67e5416a8b8ee
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_0
+      name: main_carac_katana-Sheet-export_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d0af5d752d2762498f0658ae32ede16
-      internalID: 965922347
+      spriteID: 61fbcd9b5078f864c8bb8819e84fb47a
+      internalID: -1823065031
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_1
+      name: main_carac_katana-Sheet-export_1
       rect:
         serializedVersion: 2
         x: 32
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76655374398f5fe48a335ed1c8bc0907
-      internalID: -639852628
+      spriteID: 89bd6b058da100749b3aaa3d6f7e4837
+      internalID: 267469555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_2
+      name: main_carac_katana-Sheet-export_2
       rect:
         serializedVersion: 2
         x: 64
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 382b3ced9ce7ef648a226571e1904593
-      internalID: -745027144
+      spriteID: c30dd12ee430a1d498025aecb89d0397
+      internalID: -1036113220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_3
+      name: main_carac_katana-Sheet-export_3
       rect:
         serializedVersion: 2
         x: 96
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d1cc6e6f8d3c674d99269e51ec403a0
-      internalID: 1175139058
+      spriteID: a725064d0b064d546a232ea8f3db290f
+      internalID: -1310996941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_4
+      name: main_carac_katana-Sheet-export_4
       rect:
         serializedVersion: 2
         x: 128
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f2780ac29d973c4eb48b3d998573c62
-      internalID: -1198508411
+      spriteID: 9b0ddaf13b27bc84692b1a46ff535d1c
+      internalID: -1158158121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_5
+      name: main_carac_katana-Sheet-export_5
       rect:
         serializedVersion: 2
         x: 0
@@ -216,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c29a2986b73e5894ab4bf91e112c4dcb
-      internalID: -965869636
+      spriteID: f509c0f8e9ad5c943a12d0cf99f5c42c
+      internalID: -1151744421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_6
+      name: main_carac_katana-Sheet-export_6
       rect:
         serializedVersion: 2
         x: 32
@@ -237,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6153649e0355c8f4193a88d397f11592
-      internalID: 1563225570
+      spriteID: 9c80791c1d88f1c4a9f952270a158612
+      internalID: -1213517674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_7
+      name: main_carac_katana-Sheet-export_7
       rect:
         serializedVersion: 2
         x: 64
@@ -258,14 +258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97030d7c3bfc0354cbbb25b2a60cf236
-      internalID: 478209104
+      spriteID: dc91a70fdd980ea46896f0959fe69718
+      internalID: -271508413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_8
+      name: main_carac_katana-Sheet-export_8
       rect:
         serializedVersion: 2
         x: 96
@@ -279,14 +279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3519fd00425ec1e4aafcb7d0eeb9fa3f
-      internalID: 2140958679
+      spriteID: 5b32fbf33a6c62440b2b0422088b8a13
+      internalID: -1257009902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_9
+      name: main_carac_katana-Sheet-export_9
       rect:
         serializedVersion: 2
         x: 128
@@ -300,14 +300,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4af46aed212fd4344b8ac2035253876a
-      internalID: 1320189399
+      spriteID: 29e3b2391872aff468262ea14070b8bb
+      internalID: -164219567
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_10
+      name: main_carac_katana-Sheet-export_10
       rect:
         serializedVersion: 2
         x: 0
@@ -321,14 +321,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d970b22e3d16104abc66210c542c200
-      internalID: -1377558962
+      spriteID: 9b57dcdacf210bf408d0b2a9f9c42d49
+      internalID: 1827248542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_11
+      name: main_carac_katana-Sheet-export_11
       rect:
         serializedVersion: 2
         x: 32
@@ -342,14 +342,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01e5486ec3a8b1d4184a1cff2cdc087a
-      internalID: -1853251813
+      spriteID: 82670ed911a3b9a4a80d8f5a5ae746e7
+      internalID: 1926475814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_12
+      name: main_carac_katana-Sheet-export_12
       rect:
         serializedVersion: 2
         x: 64
@@ -363,14 +363,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30543b8056e8e5a48a15ec9e771264d1
-      internalID: -1687440451
+      spriteID: 7177fcebbdab78a4eb95d0d859ca84b3
+      internalID: -803376861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_13
+      name: main_carac_katana-Sheet-export_13
       rect:
         serializedVersion: 2
         x: 96
@@ -384,14 +384,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4129bf4cf64c03747be916ae9cff30e7
-      internalID: 1660954545
+      spriteID: a0e373e77109489419980418302ca537
+      internalID: -1804185213
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_14
+      name: main_carac_katana-Sheet-export_14
       rect:
         serializedVersion: 2
         x: 128
@@ -405,14 +405,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e87fbd694baac6c49a6cb07a44113f0e
-      internalID: -1185111469
+      spriteID: 19b726b99220e0049b39cc2cf0ff7259
+      internalID: -2033530442
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_15
+      name: main_carac_katana-Sheet-export_15
       rect:
         serializedVersion: 2
         x: 0
@@ -426,14 +426,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b349b9454d093247b2972bdcf4b4123
-      internalID: 301400287
+      spriteID: 2575f8ccf09b4d345a1aa46be3954b39
+      internalID: 1184110026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_16
+      name: main_carac_katana-Sheet-export_16
       rect:
         serializedVersion: 2
         x: 32
@@ -447,14 +447,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75900a50455533c468c0c916f3b58e6a
-      internalID: -326977138
+      spriteID: 3c7544890a5b5c243b854ab6367a7e82
+      internalID: -265330325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_17
+      name: main_carac_katana-Sheet-export_17
       rect:
         serializedVersion: 2
         x: 64
@@ -468,14 +468,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e4aa99d231aec140aa1907b80f51b7c
-      internalID: -160835113
+      spriteID: 2c545d8b005176d40baa678920511cca
+      internalID: -1712165320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_18
+      name: main_carac_katana-Sheet-export_18
       rect:
         serializedVersion: 2
         x: 96
@@ -489,14 +489,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f68b582b873f4345badf4cf52334d13
-      internalID: -2113263129
+      spriteID: a1249382aaac8284fad87ac4273a477d
+      internalID: -106457799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_carac_katana-Sheet_19
+      name: main_carac_katana-Sheet-export_19
       rect:
         serializedVersion: 2
         x: 128
@@ -510,8 +510,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9301162f739690b4ba73596b0491ddc8
-      internalID: -1476026803
+      spriteID: c91412503cb2d524bb41089f74094083
+      internalID: 1256022335
       vertices: []
       indices: 
       edges: []
@@ -527,26 +527,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      main_carac_katana-Sheet_0: 965922347
-      main_carac_katana-Sheet_1: -639852628
-      main_carac_katana-Sheet_10: -1377558962
-      main_carac_katana-Sheet_11: -1853251813
-      main_carac_katana-Sheet_12: -1687440451
-      main_carac_katana-Sheet_13: 1660954545
-      main_carac_katana-Sheet_14: -1185111469
-      main_carac_katana-Sheet_15: 301400287
-      main_carac_katana-Sheet_16: -326977138
-      main_carac_katana-Sheet_17: -160835113
-      main_carac_katana-Sheet_18: -2113263129
-      main_carac_katana-Sheet_19: -1476026803
-      main_carac_katana-Sheet_2: -745027144
-      main_carac_katana-Sheet_3: 1175139058
-      main_carac_katana-Sheet_4: -1198508411
-      main_carac_katana-Sheet_5: -965869636
-      main_carac_katana-Sheet_6: 1563225570
-      main_carac_katana-Sheet_7: 478209104
-      main_carac_katana-Sheet_8: 2140958679
-      main_carac_katana-Sheet_9: 1320189399
+      main_carac_katana-Sheet-export_0: -1823065031
+      main_carac_katana-Sheet-export_1: 267469555
+      main_carac_katana-Sheet-export_10: 1827248542
+      main_carac_katana-Sheet-export_11: 1926475814
+      main_carac_katana-Sheet-export_12: -803376861
+      main_carac_katana-Sheet-export_13: -1804185213
+      main_carac_katana-Sheet-export_14: -2033530442
+      main_carac_katana-Sheet-export_15: 1184110026
+      main_carac_katana-Sheet-export_16: -265330325
+      main_carac_katana-Sheet-export_17: -1712165320
+      main_carac_katana-Sheet-export_18: -106457799
+      main_carac_katana-Sheet-export_19: 1256022335
+      main_carac_katana-Sheet-export_2: -1036113220
+      main_carac_katana-Sheet-export_3: -1310996941
+      main_carac_katana-Sheet-export_4: -1158158121
+      main_carac_katana-Sheet-export_5: -1151744421
+      main_carac_katana-Sheet-export_6: -1213517674
+      main_carac_katana-Sheet-export_7: -271508413
+      main_carac_katana-Sheet-export_8: -1257009902
+      main_carac_katana-Sheet-export_9: -164219567
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

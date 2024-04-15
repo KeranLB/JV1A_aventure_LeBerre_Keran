@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
-    public int numPotion;
+
     public bool isHealing;
 
     
@@ -18,7 +18,6 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMAxHealth(maxHealth);
-        numPotion = 0;
     }
 
     void Update()
@@ -37,9 +36,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal()
     {
-        if ((isHealing == true) && (numPotion > 0) && (currentHealth < maxHealth))
+        if ((isHealing == true) && (gameObject.GetComponent<PlayerInventaire>().numPotion > 0) && (currentHealth < maxHealth))
         {
-            numPotion -= 1;
+            gameObject.GetComponent<PlayerInventaire>().numPotion -= 1;
             if ((currentHealth + 30) > maxHealth)
             {
                 currentHealth = maxHealth;
@@ -56,15 +55,5 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // collision avec une potion collectible
-        if (collision.CompareTag("Potion"))
-        {
-            Destroy(collision.gameObject);
-            numPotion += 1;
-        }
     }
 }

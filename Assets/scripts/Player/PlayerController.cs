@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 
@@ -29,6 +27,9 @@ public class PlayerController : MonoBehaviour
     public float AimRange;
     public int moveSpeed;
 
+    // inventaire
+    public bool isChanging;
+
     // attaque
     private bool isAimingArc;
     private bool EndAimingArc;
@@ -38,20 +39,6 @@ public class PlayerController : MonoBehaviour
 
     private bool isAttacking;
     private bool isParing;
-
-
-
-    // inventaire
-    private bool gotArc;
-    public bool gotKatana;
-    public bool gotKey;
-
-    private bool isChanging;
-    public bool isEquipKatana;
-    public bool isEquipArc;
-    
-    public float numArrow;
-    public int numBombe;
 
 
     private void Awake()
@@ -64,28 +51,15 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void Start()
-    {
-        gotArc = false;
-        gotKatana = false;
-        isEquipArc = false;
-        isEquipKatana = false;
-        numArrow = 0;
-        numBombe = 0;
-    }
-
-
     void Update()
     {
         ProcessInputs();
-        ChangementArme();
+        gameObject.GetComponent<PlayerInventaire>().ChangementArme();
         Animation();
         Move();
         AimAndShoot();
         ContreAndAttack();
     }
-
-
 
     private void Animation()
     {
@@ -93,13 +67,13 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Magnitude", movement.magnitude);
 
-        if (isEquipArc == true)
+        if (gameObject.GetComponent<PlayerInventaire>().isEquipArc == true)
         {
             animator.SetBool("EquipArc", true);
             animator.SetBool("EquipKatana", false);
         }
 
-        if (isEquipKatana == true)
+        if (gameObject.GetComponent<PlayerInventaire>().isEquipKatana == true)
         {
             animator.SetBool("EquipKatana", true);
             animator.SetBool("EquipArc", false);
@@ -109,6 +83,12 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        // normalise le déplacement sur la trajectoire en diagonal
+        if (movement.magnitude > 1.0f)
+        {
+            movement.Normalize();
+        }
+
         // déplace le personnage
         transform.position = transform.position + movement * Time.deltaTime * moveSpeed;
     }
@@ -139,9 +119,9 @@ public class PlayerController : MonoBehaviour
 
 
             // créer une flèche et l'oriente dans le sens du tir
-            if ((EndAimingArc == true) && (numArrow > 0) && (isAimingArc == true))
+            if ((EndAimingArc == true) && (gameObject.GetComponent<PlayerInventaire>().numArrow > 0) && (isAimingArc == true))
             {
-                numArrow -= 1;
+                gameObject.GetComponent<PlayerInventaire>().numArrow -= 1;
                 GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
                 arrow.GetComponent<Rigidbody2D>().velocity = shootingDirection * 3.0f;
                 arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
@@ -149,9 +129,9 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Vous avez tiré.");
             }
 
-            if ((EndAimingBombe == true) && (isAimingBombe = true) && (numBombe > 0))
+            if ((EndAimingBombe == true) && (isAimingBombe = true) && (gameObject.GetComponent<PlayerInventaire>().numBombe > 0))
             {
-                numBombe -= 1;
+                gameObject.GetComponent<PlayerInventaire>().numBombe -= 1;
                 GameObject bombe = Instantiate(bombePrefab, transform.position, Quaternion.identity);
                 bombe.GetComponent<Rigidbody2D>().velocity = shootingDirection * 3.0f;
                 bombe.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg);
@@ -167,27 +147,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ChangementArme()
-    {
-        if (isChanging == true)
-        {
-            // équipe le katana
-            if ((gotKatana == true) && (isEquipArc == true))
-            {
-                isEquipKatana = true;
-                isEquipArc = false;
-            }
-
-            // équipe l'arc
-            else if ((gotArc == true) && (isEquipKatana == true))
-            {
-                isEquipArc = true;
-                isEquipKatana = false;
-            }
-        }
-
-
-    }
     private void ProcessInputs()
     {
         // déplacement manette
@@ -200,13 +159,13 @@ public class PlayerController : MonoBehaviour
             isChanging = player.GetButtonDown("ChangementArme");
             gameObject.GetComponent<PlayerHealth>().isHealing = player.GetButtonDown("Heal");
 
-            if (isEquipArc == true)
+            if (gameObject.GetComponent<PlayerInventaire>().isEquipArc == true)
             {
                 isAimingArc = player.GetButton("AimArc");
                 EndAimingArc = player.GetButtonDown("Fire");
             }
 
-            if (isEquipKatana == true)
+            if (gameObject.GetComponent<PlayerInventaire>().isEquipKatana == true)
             {
                 isAttacking = player.GetButtonDown("Attaque");
                 isParing = player.GetButton("Parade");
@@ -222,77 +181,42 @@ public class PlayerController : MonoBehaviour
         // déplacement clavier & souris
         else
         {
+            // vecteur de déplacement
             movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+
+            // curser de visé
             Vector3 mouseMovement = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0.0f);
             aim += mouseMovement;
-            
             if (aim.magnitude > AimRange)
             {
                 aim.Normalize();
             }
-            if (gotArc == true)
+
+
+            isChanging = Input.GetKeyDown(KeyCode.E);
+            gameObject.GetComponent<PlayerHealth>().isHealing = Input.GetKeyDown(KeyCode.A);
+
+
+            if (gameObject.GetComponent<PlayerInventaire>().isEquipArc == true)
             {
-                isAimingArc = Input.GetButton("AimArc");
-                EndAimingArc = Input.GetButtonUp("Fire");
+                isAimingArc = Input.GetMouseButton(1);
+                EndAimingArc = Input.GetMouseButtonDown(0);
             }
-            isAimingBombe = Input.GetButton("AimBombe");
-            EndAimingBombe = Input.GetButtonUp("LancerBombe");
-            isAttacking = Input.GetButtonDown("Attaque");
-            
-        }
 
-        // normalise le déplacement sur la trajectoire en diagonal
-        if (movement.magnitude > 1.0f)
-        {
-            movement.Normalize();
-        }
-    }
-        
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // collision avec une fleche collectible
-        if (collision.CompareTag("Arrow"))
-        {
-            Debug.Log("vous avez ramasser une flèche.");
-            Destroy(collision.gameObject);
-            numArrow += 1;
-        }
+            if (gameObject.GetComponent<PlayerInventaire>().isEquipKatana == true)
+            {
+                isAttacking = Input.GetMouseButton(1);
+                isParing = Input.GetMouseButtonDown(0);
+            }
 
-        // collision avec une bombe collectible
-        if (collision.CompareTag("Bombe"))
-        {
-            Debug.Log("vous avez ramasser une bombe.");
-            Destroy(collision.gameObject);
-            numBombe = numBombe + 1;
-        }
+            if (gameObject.GetComponent<PlayerInventaire>().isEquipBombe == true)
+            {
+                isAimingBombe = Input.GetMouseButton(1);
+                EndAimingBombe = Input.GetMouseButtonDown(0);
+            }
 
-        // collision avec l'arc collectible
-        if (collision.CompareTag("Arc"))
-        {
-            Debug.Log("vous avez ramasser un Arc.");
-            Destroy(collision.gameObject);
-            gotArc = true;
-            isEquipArc = true;
-            isEquipKatana = false;
-        }
 
-        // collision avec le katana collectible
-        if (collision.CompareTag("Katana"))
-        {
-            Debug.Log("vous avez ramasser un Katana.");
-            Destroy(collision.gameObject);
-            gotKatana = true;
-            isEquipKatana = true;
-            isEquipArc = false;
-        }
 
-        // collision avec clé collectible
-        if (collision.CompareTag("key"))
-        {
-            Debug.Log("vous avez ramasser une clé.");
-            Destroy(collision.gameObject);
-            gotKey = true;
         }
-    }
-    
+    }    
 }
