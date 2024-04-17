@@ -11,6 +11,7 @@ public class PlayerInventaire : MonoBehaviour
     public int numPotion;
 
     // équipé
+    private int indiceArmePrincipal;
     public bool isEquipKatana;
     public bool isEquipArc;
     public bool isEquipBombe;
@@ -23,6 +24,8 @@ public class PlayerInventaire : MonoBehaviour
     {
         gotArc = false;
         gotKatana = false;
+        gotKey = false;
+        indiceArmePrincipal = 3;
         isEquipArc = false;
         isEquipKatana = false;
         isEquipBombe = false;
@@ -55,8 +58,7 @@ public class PlayerInventaire : MonoBehaviour
             Debug.Log("vous avez ramasser un Arc.");
             Destroy(collision.gameObject);
             gotArc = true;
-            isEquipArc = true;
-            isEquipKatana = false;
+            indiceArmePrincipal = 2;
         }
 
         // collision avec le katana collectible
@@ -65,8 +67,7 @@ public class PlayerInventaire : MonoBehaviour
             Debug.Log("vous avez ramasser un Katana.");
             Destroy(collision.gameObject);
             gotKatana = true;
-            isEquipKatana = true;
-            isEquipArc = false;
+            indiceArmePrincipal = 1;
         }
 
         // collision avec clé collectible
@@ -84,23 +85,93 @@ public class PlayerInventaire : MonoBehaviour
             numPotion += 1;
         }
     }
+
+    void ChangementArmeUp()
+    {
+        indiceArmePrincipal += 1;
+
+        if (indiceArmePrincipal >= 4)
+        {
+            indiceArmePrincipal = 1;
+        }
+
+        if ((gotArc == false) && (indiceArmePrincipal == 2))
+        {
+            indiceArmePrincipal = 3;
+        }
+
+        else if ((gotKatana == false) && (gotArc == false) && (indiceArmePrincipal == 1))
+        {
+            indiceArmePrincipal = 3;
+        }
+
+        else if ((gotKatana == false) && (gotArc == true) && (indiceArmePrincipal == 1))
+        {
+            indiceArmePrincipal = 2;
+        }
+
+
+    }
+
+    void ChangementArmeDown()
+    {
+        indiceArmePrincipal -= 1;
+
+        if (indiceArmePrincipal <= 0)
+        {
+            indiceArmePrincipal = 3;
+        }
+
+        if ((gotKatana == false) && (indiceArmePrincipal == 1))
+        {
+            indiceArmePrincipal = 3;
+        }
+
+        else if ((gotArc == false) && (gotKatana == false) && (indiceArmePrincipal == 2))
+        {
+            indiceArmePrincipal = 3;
+        }
+
+        else if ((gotArc == false) && (gotKatana == true) && (indiceArmePrincipal == 2))
+        {
+            indiceArmePrincipal = 1;
+        }
+    }
     public void ChangementArme()
     {
-        if (gameObject.GetComponent<PlayerController>().isChanging == true)
-        {
-            // équipe le katana
-            if ((gotKatana == true) && (isEquipArc == true))
-            {
-                isEquipKatana = true;
-                isEquipArc = false;
-            }
 
-            // équipe l'arc
-            else if ((gotArc == true) && (isEquipKatana == true))
-            {
-                isEquipArc = true;
-                isEquipKatana = false;
-            }
+        if (gameObject.GetComponent<PlayerController>().isChangingUp == true)
+        {
+            ChangementArmeUp();
+        }
+
+        if (gameObject.GetComponent<PlayerController>().isChangingDown == true)
+        {
+            ChangementArmeDown();
+        }
+
+        // équipe le katana
+        else if (indiceArmePrincipal == 1)
+        {
+            isEquipKatana = true;
+            isEquipArc = false;
+            isEquipBombe = false;
+        }
+
+        // équipe l'arc
+        else if (indiceArmePrincipal == 2)
+        {
+            isEquipArc = true;
+            isEquipKatana = false;
+            isEquipBombe = false;
+        }
+
+        // équipe les bombes
+        else if (indiceArmePrincipal == 3)
+        {
+            isEquipBombe = true;
+            isEquipKatana = false;
+            isEquipArc = false;
         }
     }
 }

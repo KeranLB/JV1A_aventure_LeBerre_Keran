@@ -3,6 +3,7 @@ using UnityEngine;
 public class ennemi : MonoBehaviour
 {
     // follow
+    public bool isFollowing;
     public GameObject player;
     public float speed;
     public float distanceBetween;
@@ -26,24 +27,16 @@ public class ennemi : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMAxHealth(maxHealth);
+        isFollowing = false;
     }
 
     void Update()
     {
         Death();
-
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
-        direction.Normalize();
-        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-
-        //float angle = Mathf.Atan2 (direction.x, direction.y) * Mathf.Rad2Deg;
-        /*
-        if (distanceBetween > distance)
+        if (isFollowing == true)
         {
-            //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-        }
-        */
+            Follow();
+        }    
     }
     public void TakeDamage(int damage)
     {
@@ -51,6 +44,20 @@ public class ennemi : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
+    private void Follow()
+    {
+        distance = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 direction = player.transform.position - transform.position;
+        direction.Normalize();
+        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+
+        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+
+        if (distanceBetween > distance)
+        {
+            transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        }
+    }
     private void Death()
     {
         if (currentHealth <= 0)

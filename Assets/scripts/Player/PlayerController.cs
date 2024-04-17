@@ -28,7 +28,9 @@ public class PlayerController : MonoBehaviour
     public int moveSpeed;
 
     // inventaire
-    public bool isChanging;
+    public bool isChangingUp;
+    public bool isChangingDown;
+
 
     // attaque
     private bool isAimingArc;
@@ -156,25 +158,25 @@ public class PlayerController : MonoBehaviour
             aim = new Vector3(player.GetAxis("AimHorizontal"), player.GetAxis("AimVertical"), 0.0f);
             aim.Normalize();
 
-            isChanging = player.GetButtonDown("ChangementArme");
+            isChangingUp = player.GetButtonDown("ChangementArmeUp");
+            isChangingDown = player.GetButtonDown("ChangementArmeDown");
             gameObject.GetComponent<PlayerHealth>().isHealing = player.GetButtonDown("Heal");
 
             if (gameObject.GetComponent<PlayerInventaire>().isEquipArc == true)
             {
-                isAimingArc = player.GetButton("AimArc");
-                EndAimingArc = player.GetButtonDown("Fire");
+                isAimingArc = player.GetButton("Aim");
+                EndAimingArc = player.GetButtonDown("Attaque");
             }
 
             if (gameObject.GetComponent<PlayerInventaire>().isEquipKatana == true)
             {
                 isAttacking = player.GetButtonDown("Attaque");
-                isParing = player.GetButton("Parade");
             }
 
-            if (isAimingArc == false)
+            if (gameObject.GetComponent<PlayerInventaire>().isEquipBombe == true)
             {
-                isAimingBombe = player.GetButton("AimBombe");
-                EndAimingBombe = player.GetButtonDown("LancerBombe");
+                isAimingBombe = player.GetButton("Aim");
+                EndAimingBombe = player.GetButtonDown("Attaque");
             }
         }
 
@@ -193,8 +195,9 @@ public class PlayerController : MonoBehaviour
             }
 
 
-            isChanging = Input.GetKeyDown(KeyCode.E);
-            gameObject.GetComponent<PlayerHealth>().isHealing = Input.GetKeyDown(KeyCode.A);
+            isChangingUp = Input.GetKeyDown(KeyCode.E);
+            isChangingDown = Input.GetKeyDown(KeyCode.A);
+            gameObject.GetComponent<PlayerHealth>().isHealing = Input.GetKeyDown(KeyCode.X);
 
 
             if (gameObject.GetComponent<PlayerInventaire>().isEquipArc == true)
@@ -206,7 +209,6 @@ public class PlayerController : MonoBehaviour
             if (gameObject.GetComponent<PlayerInventaire>().isEquipKatana == true)
             {
                 isAttacking = Input.GetMouseButton(1);
-                isParing = Input.GetMouseButtonDown(0);
             }
 
             if (gameObject.GetComponent<PlayerInventaire>().isEquipBombe == true)

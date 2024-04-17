@@ -15,6 +15,7 @@ TagManager:
   - ennemi
   - BombeProjectil
   - FlecheProjectil
+  - triggerFollow
   layers:
   - Default
   - TransparentFX
