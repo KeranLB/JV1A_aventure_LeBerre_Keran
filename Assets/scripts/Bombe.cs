@@ -6,16 +6,16 @@ public class Bombe : MonoBehaviour
     {
         if (collision.CompareTag("ennemi"))
         {
-            if (collision.GetComponent<ennemi>().gotShield == true)
+            if (collision.GetComponent<triggerZone>().gotShield == true)
             {
-                collision.GetComponent<ennemi>().TakeDamage(50);
+                collision.GetComponent<triggerZone>().TakeDamage(50);
                 Destroy(gameObject);
-                collision.GetComponent<ennemi>().gotShield = false;
+                collision.GetComponent<triggerZone>().gotShield = false;
             }
 
             else
             {
-                collision.GetComponent<ennemi>().TakeDamage(100);
+                collision.GetComponent<triggerZone>().TakeDamage(100);
                 Destroy(gameObject);
             }
         }

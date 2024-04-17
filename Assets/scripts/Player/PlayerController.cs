@@ -168,12 +168,12 @@ public class PlayerController : MonoBehaviour
                 EndAimingArc = player.GetButtonDown("Attaque");
             }
 
-            if (gameObject.GetComponent<PlayerInventaire>().isEquipKatana == true)
+            else if (gameObject.GetComponent<PlayerInventaire>().isEquipKatana == true)
             {
                 isAttacking = player.GetButtonDown("Attaque");
             }
 
-            if (gameObject.GetComponent<PlayerInventaire>().isEquipBombe == true)
+            else if (gameObject.GetComponent<PlayerInventaire>().isEquipBombe == true)
             {
                 isAimingBombe = player.GetButton("Aim");
                 EndAimingBombe = player.GetButtonDown("Attaque");
