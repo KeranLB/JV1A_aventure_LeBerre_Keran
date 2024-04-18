@@ -6,16 +6,16 @@ public class fleche : MonoBehaviour
     {
         if (collision.CompareTag("ennemi"))
         {
-            if (collision.GetComponent<triggerZone>().gotShield == true)
+            if (collision.GetComponent<ennemi>().gotShield == true)
             {
                 Destroy(gameObject);
-                collision.GetComponent<triggerZone>().TakeDamage(10);
+                collision.GetComponent<ennemi>().TakeDamage(10);
             }
 
             else
             {
                 Destroy(gameObject);
-                collision.GetComponent<triggerZone>().TakeDamage(25);
+                collision.GetComponent<ennemi>().TakeDamage(25);
             }
         }
     }

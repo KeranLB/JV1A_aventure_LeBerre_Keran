@@ -79,7 +79,16 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("EquipKatana", true);
             animator.SetBool("EquipArc", false);
+            if (isAttacking == true)
+            {
+                animator.SetBool("isAttacking", true);
+                if (animator.GetBool("ATK1") == true)
+                {
+                    animator.
+                }
+            }
         }
+
     }
 
 
