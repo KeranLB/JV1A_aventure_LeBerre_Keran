@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    PlayerInventaire Inventaire;
     public void Heal()
     {
         if ((isHealing == true) && (gameObject.GetComponent<PlayerInventaire>().numPotion > 0) && (currentHealth < maxHealth))

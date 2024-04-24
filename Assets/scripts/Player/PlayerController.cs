@@ -3,36 +3,35 @@ using Rewired;
 
 public class PlayerController : MonoBehaviour
 {
-    // inputs
+    #region inputs
     public bool useController;
-
-    // animation
+    #endregion
+    #region animation
     public Animator animator;
-
-    // gameObject
+    #endregion
+    #region GameObject
     public GameObject crossHair;
     public GameObject arrowPrefab;
     public GameObject bombePrefab;
-
-
-    // rewired
+    #endregion    
+    #region rewired
     private Player player;
     public int playerId = 0;
-
-    //deplacement
+    #endregion
+    #region deplacement
     private Vector3 movement;
     private Vector3 aim;
 
     public float shootingRange;
     public float AimRange;
     public int moveSpeed;
-
-    // inventaire
+    #endregion
+    #region Inventaire
+    PlayerInventaire Inventaire;
     public bool isChangingUp;
     public bool isChangingDown;
-
-
-    // attaque
+    #endregion
+    #region attaque
     private bool isAimingArc;
     private bool EndAimingArc;
 
@@ -41,10 +40,11 @@ public class PlayerController : MonoBehaviour
 
     private bool isAttacking;
     private bool isParing;
-
+    #endregion
 
     private void Awake()
     {
+        Inventaire = GetComponent<PlayerInventaire>();
         // initialise le player pour les inputs lier à rewired
         player = ReInput.players.GetPlayer(playerId);
 
@@ -69,13 +69,13 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Magnitude", movement.magnitude);
 
-        if (gameObject.GetComponent<PlayerInventaire>().isEquipArc == true)
+        if (Inventaire.isEquipArc == true)
         {
             animator.SetBool("EquipArc", true);
             animator.SetBool("EquipKatana", false);
         }
 
-        if (gameObject.GetComponent<PlayerInventaire>().isEquipKatana == true)
+        if (Inventaire.isEquipKatana == true)
         {
             animator.SetBool("EquipKatana", true);
             animator.SetBool("EquipArc", false);
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isAttacking", true);
                 if (animator.GetBool("ATK1") == true)
                 {
-                    animator.
+                    animator.SetBool("ATK1", false);
                 }
             }
         }
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
 
             // créer une flèche et l'oriente dans le sens du tir
-            if ((EndAimingArc == true) && (gameObject.GetComponent<PlayerInventaire>().numArrow > 0) && (isAimingArc == true))
+            if ((EndAimingArc == true) && (Inventaire.numArrow > 0) && (isAimingArc == true))
             {
                 gameObject.GetComponent<PlayerInventaire>().numArrow -= 1;
                 GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Vous avez tiré.");
             }
 
-            if ((EndAimingBombe == true) && (isAimingBombe = true) && (gameObject.GetComponent<PlayerInventaire>().numBombe > 0))
+            if ((EndAimingBombe == true) && (isAimingBombe = true) && (Inventaire.numBombe > 0))
             {
                 gameObject.GetComponent<PlayerInventaire>().numBombe -= 1;
                 GameObject bombe = Instantiate(bombePrefab, transform.position, Quaternion.identity);
@@ -171,20 +171,24 @@ public class PlayerController : MonoBehaviour
             isChangingDown = player.GetButtonDown("ChangementArmeDown");
             gameObject.GetComponent<PlayerHealth>().isHealing = player.GetButtonDown("Heal");
 
-            if (gameObject.GetComponent<PlayerInventaire>().isEquipArc == true)
+            if (Inventaire.isEquipArc == true)
             {
-                isAimingArc = player.GetButton("Aim");
+                isAimingBombe = false;
+                isAimingArc = (aim != new Vector3(0.0f, 0.0f, 0.0f));
                 EndAimingArc = player.GetButtonDown("Attaque");
             }
 
-            else if (gameObject.GetComponent<PlayerInventaire>().isEquipKatana == true)
+            else if (Inventaire.isEquipKatana == true)
             {
+                isAimingArc = false;
+                isAimingBombe = false;
                 isAttacking = player.GetButtonDown("Attaque");
             }
 
-            else if (gameObject.GetComponent<PlayerInventaire>().isEquipBombe == true)
+            else if (Inventaire.isEquipBombe == true)
             {
-                isAimingBombe = player.GetButton("Aim");
+                isAimingArc = false;
+                isAimingBombe = (aim != new Vector3(0.0f, 0.0f, 0.0f));
                 EndAimingBombe = player.GetButtonDown("Attaque");
             }
         }
@@ -209,18 +213,18 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponent<PlayerHealth>().isHealing = Input.GetKeyDown(KeyCode.X);
 
 
-            if (gameObject.GetComponent<PlayerInventaire>().isEquipArc == true)
+            if (Inventaire.isEquipArc == true)
             {
                 isAimingArc = Input.GetMouseButton(1);
                 EndAimingArc = Input.GetMouseButtonDown(0);
             }
 
-            if (gameObject.GetComponent<PlayerInventaire>().isEquipKatana == true)
+            if (Inventaire.isEquipKatana == true)
             {
                 isAttacking = Input.GetMouseButton(1);
             }
 
-            if (gameObject.GetComponent<PlayerInventaire>().isEquipBombe == true)
+            if (Inventaire.isEquipBombe == true)
             {
                 isAimingBombe = Input.GetMouseButton(1);
                 EndAimingBombe = Input.GetMouseButtonDown(0);
