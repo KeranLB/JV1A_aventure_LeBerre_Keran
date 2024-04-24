@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     #endregion
     #region GameObject
-    public GameObject crossHair;
+    public GameObject crossHairArc;
+    public GameObject crossHairBombe;
     public GameObject arrowPrefab;
     public GameObject bombePrefab;
     #endregion    
@@ -39,12 +40,16 @@ public class PlayerController : MonoBehaviour
     private bool EndAimingBombe;
 
     private bool isAttacking;
-    private bool isParing;
+    private bool ATK_a;
+    private bool ATK_b;
     #endregion
 
     private void Awake()
     {
         Inventaire = GetComponent<PlayerInventaire>();
+
+        ATK_a = true;
+        ATK_b = false;
         // initialise le player pour les inputs lier à rewired
         player = ReInput.players.GetPlayer(playerId);
 
@@ -56,15 +61,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         ProcessInputs();
-        gameObject.GetComponent<PlayerInventaire>().ChangementArme();
+        Inventaire.ChangementArme();
         Animation();
         Move();
         AimAndShoot();
-        ContreAndAttack();
+        AtkKatana();
     }
 
     private void Animation()
     {
+        animator.SetBool("EquipArc", false);
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Magnitude", movement.magnitude);
@@ -75,20 +81,32 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("EquipKatana", false);
         }
 
-        if (Inventaire.isEquipKatana == true)
+        else if (Inventaire.isEquipKatana == true)
         {
             animator.SetBool("EquipKatana", true);
             animator.SetBool("EquipArc", false);
-            if (isAttacking == true)
+        }
+    }
+
+    void AtkKatana()
+    {
+        if (isAttacking == true)
+        {
+            animator.SetBool("EquipArc", true);
+            if (ATK_a == true)
             {
-                animator.SetBool("isAttacking", true);
-                if (animator.GetBool("ATK1") == true)
-                {
-                    animator.SetBool("ATK1", false);
-                }
+                animator.Play("ATK1");
+                ATK_a = false;
+                ATK_b = true;
+            }
+
+            else if (ATK_b == true)
+            {
+                animator.Play("ATK2");
+                ATK_b = false;
+                ATK_a = true;
             }
         }
-
     }
 
 
@@ -104,16 +122,21 @@ public class PlayerController : MonoBehaviour
         transform.position = transform.position + movement * Time.deltaTime * moveSpeed;
     }
 
-    private void ContreAndAttack()
+
+    void CrossHair()
     {
-        if (isParing == true)
+        if (Inventaire.isEquipBombe == true)
         {
-            Debug.Log("Tu es en train de parer.");
+            crossHairBombe.transform.localPosition = aim * AimRange;
+            crossHairBombe.SetActive(true);
+            crossHairArc.SetActive(false);
         }
 
-        else if (isAttacking == true)
+        if (Inventaire.isEquipArc == true)
         {
-            Debug.Log("tu as attaquer avec ton Katana.");
+            crossHairArc.transform.localPosition = aim * AimRange;
+            crossHairArc.SetActive(true);
+            crossHairBombe.SetActive(false);
         }
     }
     private void AimAndShoot()
@@ -123,11 +146,9 @@ public class PlayerController : MonoBehaviour
         // active le crossHair et le déplace en fonction de où l'on vise et si l'on est en train de viser.
         if ((aim.magnitude > 0.0f) && ((isAimingArc == true) || (isAimingBombe == true)))
         {
-            crossHair.transform.localPosition = aim * AimRange;
-            crossHair.SetActive(true);
+            CrossHair();
 
             shootingDirection.Normalize();
-
 
             // créer une flèche et l'oriente dans le sens du tir
             if ((EndAimingArc == true) && (Inventaire.numArrow > 0) && (isAimingArc == true))
@@ -154,7 +175,8 @@ public class PlayerController : MonoBehaviour
         // désactive le crossHair quand il n'est pas utiliser
         else
         {
-            crossHair.SetActive(false);
+            crossHairArc.SetActive(false);
+            crossHairBombe.SetActive(false);
         }
     }
 

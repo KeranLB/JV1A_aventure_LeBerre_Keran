@@ -375,8 +375,8 @@ GameObject:
   - component: {fileID: 2588837076956277755}
   - component: {fileID: 9111689942243642551}
   m_Layer: 0
-  m_Name: Ennemi
-  m_TagString: ennemi
+  m_Name: TenguFantom
+  m_TagString: Kappa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -532,7 +532,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 3297265908811903682}
-  gotShield: 0
+  gotShield: 1
   PrefabFleche: {fileID: 9150738511003664626, guid: f835e6bb2feef7e459cac260e43b298a, type: 3}
   PrefabPotion: {fileID: 5854490632505903013, guid: e71cc05959e99944ebfacaace7122601, type: 3}
   PrefabBombe: {fileID: 5300106562604480805, guid: 198610c5aa1827644bc641993fc30e70, type: 3}

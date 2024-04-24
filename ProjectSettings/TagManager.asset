@@ -16,6 +16,7 @@ TagManager:
   - BombeProjectil
   - FlecheProjectil
   - triggerFollow
+  - Kappa
   layers:
   - Default
   - TransparentFX

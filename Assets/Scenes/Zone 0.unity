@@ -959,7 +959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4946002745824995182, guid: 05364277b03990248b5691425651e1e2, type: 3}
       propertyPath: m_TagString
-      value: ennemi
+      value: Kappa
       objectReference: {fileID: 0}
     - target: {fileID: 5239969072257036630, guid: 05364277b03990248b5691425651e1e2, type: 3}
       propertyPath: m_IsTrigger
