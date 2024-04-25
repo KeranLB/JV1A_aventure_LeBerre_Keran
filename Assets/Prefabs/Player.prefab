@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8334157346399872451}
   - component: {fileID: 120115671759108251}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CrossHairBombe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6986789107595803653}
   - component: {fileID: 4962305873821017481}
   - component: {fileID: 8944138774971462627}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TopATK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 813976699376164916}
   - component: {fileID: 2101351434561283200}
   - component: {fileID: 6362907273945943561}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -436,6 +436,8 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 0}
   isHealing: 0
+  iFramesDuration: 1
+  numberOfFlashes: 2
 --- !u!114 &6362907273945943561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,7 +469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3937436191445678529}
   - component: {fileID: 7125066217824795797}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CrossHairArc
   m_TagString: Untagged
   m_Icon: {fileID: 0}

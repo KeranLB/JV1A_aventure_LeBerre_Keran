@@ -100,10 +100,10 @@ TextureImporter:
       name: kappa_carapace_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 208
-        width: 64
-        height: 64
+        x: 25
+        y: 221
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,10 +121,10 @@ TextureImporter:
       name: kappa_carapace_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 208
-        width: 64
-        height: 64
+        x: 89
+        y: 221
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,10 +142,10 @@ TextureImporter:
       name: kappa_carapace_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 208
-        width: 64
-        height: 64
+        x: 153
+        y: 221
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +163,10 @@ TextureImporter:
       name: kappa_carapace_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 208
-        width: 64
-        height: 64
+        x: 217
+        y: 221
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: kappa_carapace_4
       rect:
         serializedVersion: 2
-        x: 256
-        y: 208
-        width: 64
-        height: 64
+        x: 281
+        y: 221
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +205,10 @@ TextureImporter:
       name: kappa_carapace_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 144
-        width: 64
-        height: 64
+        x: 25
+        y: 152
+        width: 15
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,10 +226,10 @@ TextureImporter:
       name: kappa_carapace_6
       rect:
         serializedVersion: 2
-        x: 64
-        y: 144
-        width: 64
-        height: 64
+        x: 89
+        y: 152
+        width: 15
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +247,10 @@ TextureImporter:
       name: kappa_carapace_7
       rect:
         serializedVersion: 2
-        x: 128
-        y: 144
-        width: 64
-        height: 64
+        x: 153
+        y: 152
+        width: 15
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,10 +268,10 @@ TextureImporter:
       name: kappa_carapace_8
       rect:
         serializedVersion: 2
-        x: 192
-        y: 144
-        width: 64
-        height: 64
+        x: 217
+        y: 152
+        width: 15
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,10 +289,10 @@ TextureImporter:
       name: kappa_carapace_9
       rect:
         serializedVersion: 2
-        x: 256
-        y: 144
-        width: 64
-        height: 64
+        x: 281
+        y: 152
+        width: 15
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,10 +310,10 @@ TextureImporter:
       name: kappa_carapace_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
-        width: 64
-        height: 64
+        x: 25
+        y: 85
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,10 +331,10 @@ TextureImporter:
       name: kappa_carapace_11
       rect:
         serializedVersion: 2
-        x: 64
-        y: 80
-        width: 64
-        height: 64
+        x: 89
+        y: 85
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,10 +352,10 @@ TextureImporter:
       name: kappa_carapace_12
       rect:
         serializedVersion: 2
-        x: 128
-        y: 80
-        width: 64
-        height: 64
+        x: 153
+        y: 85
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,10 +373,10 @@ TextureImporter:
       name: kappa_carapace_13
       rect:
         serializedVersion: 2
-        x: 192
-        y: 80
-        width: 64
-        height: 64
+        x: 217
+        y: 85
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,10 +394,10 @@ TextureImporter:
       name: kappa_carapace_14
       rect:
         serializedVersion: 2
-        x: 256
-        y: 80
-        width: 64
-        height: 64
+        x: 281
+        y: 85
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,10 +415,10 @@ TextureImporter:
       name: kappa_carapace_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
-        width: 64
-        height: 64
+        x: 25
+        y: 17
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -436,10 +436,10 @@ TextureImporter:
       name: kappa_carapace_16
       rect:
         serializedVersion: 2
-        x: 64
-        y: 16
-        width: 64
-        height: 64
+        x: 89
+        y: 17
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -457,10 +457,10 @@ TextureImporter:
       name: kappa_carapace_17
       rect:
         serializedVersion: 2
-        x: 128
-        y: 16
-        width: 64
-        height: 64
+        x: 153
+        y: 17
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -478,10 +478,10 @@ TextureImporter:
       name: kappa_carapace_18
       rect:
         serializedVersion: 2
-        x: 192
-        y: 16
-        width: 64
-        height: 64
+        x: 217
+        y: 17
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -499,10 +499,10 @@ TextureImporter:
       name: kappa_carapace_19
       rect:
         serializedVersion: 2
-        x: 256
-        y: 16
-        width: 64
-        height: 64
+        x: 281
+        y: 17
+        width: 15
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

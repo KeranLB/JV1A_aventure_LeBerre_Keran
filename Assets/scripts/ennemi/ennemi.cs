@@ -7,7 +7,10 @@ public class ennemi : MonoBehaviour
     public GameObject player;
     public float speed;
     public float distanceBetween;
-    private float distance;
+    public float distance;
+    public Vector2 direction;
+
+    private Vector2 infosAnim;
 
     // attaque
     public int damage = 1;
@@ -58,7 +61,7 @@ public class ennemi : MonoBehaviour
     private void Follow()
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
+        direction = player.transform.position - transform.position;
         direction.Normalize();
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
 
@@ -75,6 +78,7 @@ public class ennemi : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
+            //player.GetComponent<PlayerHealth>().StartCoroutine(player.GetComponent<PlayerHealth>().invunerability()); ;
         }
     }
 }

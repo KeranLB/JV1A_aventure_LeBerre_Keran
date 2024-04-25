@@ -100,10 +100,10 @@ TextureImporter:
       name: kappa_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 208
-        width: 64
-        height: 64
+        x: 27
+        y: 221
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,10 +121,10 @@ TextureImporter:
       name: kappa_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 208
-        width: 64
-        height: 64
+        x: 91
+        y: 221
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,10 +142,10 @@ TextureImporter:
       name: kappa_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 208
-        width: 64
-        height: 64
+        x: 155
+        y: 221
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +163,10 @@ TextureImporter:
       name: kappa_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 208
-        width: 64
-        height: 64
+        x: 219
+        y: 221
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: kappa_4
       rect:
         serializedVersion: 2
-        x: 256
-        y: 208
-        width: 64
-        height: 64
+        x: 283
+        y: 221
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +205,10 @@ TextureImporter:
       name: kappa_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 144
-        width: 64
-        height: 64
+        x: 27
+        y: 153
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,10 +226,10 @@ TextureImporter:
       name: kappa_6
       rect:
         serializedVersion: 2
-        x: 64
-        y: 144
-        width: 64
-        height: 64
+        x: 91
+        y: 153
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +247,10 @@ TextureImporter:
       name: kappa_7
       rect:
         serializedVersion: 2
-        x: 128
-        y: 144
-        width: 64
-        height: 64
+        x: 155
+        y: 153
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,10 +268,10 @@ TextureImporter:
       name: kappa_8
       rect:
         serializedVersion: 2
-        x: 192
-        y: 144
-        width: 64
-        height: 64
+        x: 219
+        y: 153
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,10 +289,10 @@ TextureImporter:
       name: kappa_9
       rect:
         serializedVersion: 2
-        x: 256
-        y: 144
-        width: 64
-        height: 64
+        x: 283
+        y: 153
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,10 +310,10 @@ TextureImporter:
       name: kappa_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
-        width: 64
-        height: 64
+        x: 27
+        y: 85
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,10 +331,10 @@ TextureImporter:
       name: kappa_11
       rect:
         serializedVersion: 2
-        x: 64
-        y: 80
-        width: 64
-        height: 64
+        x: 91
+        y: 85
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,10 +352,10 @@ TextureImporter:
       name: kappa_12
       rect:
         serializedVersion: 2
-        x: 128
-        y: 80
-        width: 64
-        height: 64
+        x: 155
+        y: 85
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,10 +373,10 @@ TextureImporter:
       name: kappa_13
       rect:
         serializedVersion: 2
-        x: 192
-        y: 80
-        width: 64
-        height: 64
+        x: 219
+        y: 85
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,10 +394,10 @@ TextureImporter:
       name: kappa_14
       rect:
         serializedVersion: 2
-        x: 256
-        y: 80
-        width: 64
-        height: 64
+        x: 283
+        y: 85
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,10 +415,10 @@ TextureImporter:
       name: kappa_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
-        width: 64
-        height: 64
+        x: 27
+        y: 17
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -436,10 +436,10 @@ TextureImporter:
       name: kappa_16
       rect:
         serializedVersion: 2
-        x: 64
-        y: 16
-        width: 64
-        height: 64
+        x: 91
+        y: 17
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -457,10 +457,10 @@ TextureImporter:
       name: kappa_17
       rect:
         serializedVersion: 2
-        x: 128
-        y: 16
-        width: 64
-        height: 64
+        x: 155
+        y: 17
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -478,10 +478,10 @@ TextureImporter:
       name: kappa_18
       rect:
         serializedVersion: 2
-        x: 192
-        y: 16
-        width: 64
-        height: 64
+        x: 219
+        y: 17
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -499,10 +499,10 @@ TextureImporter:
       name: kappa_19
       rect:
         serializedVersion: 2
-        x: 256
-        y: 16
-        width: 64
-        height: 64
+        x: 283
+        y: 17
+        width: 11
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

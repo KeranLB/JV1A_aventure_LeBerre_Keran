@@ -4,7 +4,7 @@ public class fleche : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("ennemi"))
+        if (collision.CompareTag("Kappa"))
         {
             if (collision.GetComponent<ennemi>().gotShield == true)
             {
