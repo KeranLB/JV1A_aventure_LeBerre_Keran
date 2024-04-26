@@ -17,6 +17,10 @@ TagManager:
   - FlecheProjectil
   - triggerFollow
   - Kappa
+  - Tengu
+  - TenguFantom
+  - GameOver
+  - Win
   layers:
   - Default
   - TransparentFX

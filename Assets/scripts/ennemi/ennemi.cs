@@ -25,6 +25,9 @@ public class ennemi : MonoBehaviour
     public GameObject PrefabFleche;
     public GameObject PrefabPotion;
     public GameObject PrefabBombe;
+    public GameObject Menu;
+    public GameObject GameOver;
+    public GameObject GameWin;
 
     private void Start()
     {
@@ -35,11 +38,15 @@ public class ennemi : MonoBehaviour
 
     void Update()
     {
-        Death();
-        if (isFollowing == true)
+        if ((Menu.activeSelf == false) || (GameOver.activeSelf == false) || (GameWin.activeSelf == false))
         {
-            Follow();
+            Death();
+            if (isFollowing == true)
+            {
+                Follow();
+            }
         }
+
     }
 
     public void TakeDamage(int damage)

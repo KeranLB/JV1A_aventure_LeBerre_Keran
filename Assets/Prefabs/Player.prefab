@@ -409,11 +409,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useController: 0
+  Pause: 0
   animator: {fileID: 2074161205439165023}
   crossHairArc: {fileID: 5533899437768596805}
   crossHairBombe: {fileID: 2155901243993371795}
   arrowPrefab: {fileID: 5555945091613353478, guid: 3724d3a72348cc44b816f7ceaddbee2f, type: 3}
   bombePrefab: {fileID: 3194227536497796984, guid: df5233a4f7fb69447bbe5ad903401fd4, type: 3}
+  Menu: {fileID: 0}
   playerId: 0
   shootingRange: 1
   AimRange: 1
@@ -435,6 +437,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 0}
+  dead: 0
   isHealing: 0
   iFramesDuration: 1
   numberOfFlashes: 2

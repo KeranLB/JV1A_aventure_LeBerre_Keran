@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     #region inputs
     public bool useController;
+    public bool Pause;
     #endregion
     #region animation
     public Animator animator;
@@ -14,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public GameObject crossHairBombe;
     public GameObject arrowPrefab;
     public GameObject bombePrefab;
+    public GameObject Menu;
+    public GameObject GameOver;
+    public GameObject GameWin;
+
     #endregion    
     #region rewired
     private Player player;
@@ -48,24 +53,34 @@ public class PlayerController : MonoBehaviour
     {
         Inventaire = GetComponent<PlayerInventaire>();
 
+
         ATK_a = true;
         ATK_b = false;
         // initialise le player pour les inputs lier à rewired
         player = ReInput.players.GetPlayer(playerId);
 
-        // cache et bloque le curseur de la souris en game
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Pause = false;
     }
 
     void Update()
     {
-        ProcessInputs();
-        Inventaire.ChangementArme();
-        Animation();
-        Move();
-        AimAndShoot();
-        AtkKatana();
+        if ((Menu.activeSelf == false) || (GameOver.activeSelf == false) || (GameWin.activeSelf == false))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            ProcessInputs();
+            Inventaire.ChangementArme();
+            Animation();
+            Move();
+            AimAndShoot();
+            AtkKatana();
+        }
+
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     private void Animation()
@@ -189,6 +204,8 @@ public class PlayerController : MonoBehaviour
             aim = new Vector3(player.GetAxis("AimHorizontal"), player.GetAxis("AimVertical"), 0.0f);
             aim.Normalize();
 
+            Pause = player.GetButtonDown("Pause");
+
             isChangingUp = player.GetButtonDown("ChangementArmeUp");
             isChangingDown = player.GetButtonDown("ChangementArmeDown");
             gameObject.GetComponent<PlayerHealth>().isHealing = player.GetButtonDown("Heal");
@@ -229,7 +246,7 @@ public class PlayerController : MonoBehaviour
                 aim.Normalize();
             }
 
-
+            Pause = Input.GetKeyDown(KeyCode.Escape);
             isChangingUp = Input.GetKeyDown(KeyCode.E);
             isChangingDown = Input.GetKeyDown(KeyCode.A);
             gameObject.GetComponent<PlayerHealth>().isHealing = Input.GetKeyDown(KeyCode.X);
@@ -243,7 +260,7 @@ public class PlayerController : MonoBehaviour
 
             if (Inventaire.isEquipKatana == true)
             {
-                isAttacking = Input.GetMouseButton(1);
+                isAttacking = Input.GetMouseButtonDown(0);
             }
 
             if (Inventaire.isEquipBombe == true)

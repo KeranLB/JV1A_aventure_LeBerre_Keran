@@ -481,7 +481,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -554,6 +554,7 @@ MonoBehaviour:
   PrefabFleche: {fileID: 9150738511003664626, guid: f835e6bb2feef7e459cac260e43b298a, type: 3}
   PrefabPotion: {fileID: 5854490632505903013, guid: e71cc05959e99944ebfacaace7122601, type: 3}
   PrefabBombe: {fileID: 5300106562604480805, guid: 198610c5aa1827644bc641993fc30e70, type: 3}
+  Menu: {fileID: 0}
 --- !u!95 &2842202891015776606
 Animator:
   serializedVersion: 5

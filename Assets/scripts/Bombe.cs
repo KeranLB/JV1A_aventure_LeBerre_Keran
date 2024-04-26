@@ -15,7 +15,7 @@ public class Bombe : MonoBehaviour
 
             else
             {
-                collision.GetComponent<ennemi>().TakeDamage(100);
+                collision.GetComponent<ennemi>().TakeDamage(5);
                 Destroy(gameObject);
             }
         }

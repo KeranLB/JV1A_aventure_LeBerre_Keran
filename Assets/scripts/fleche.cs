@@ -9,7 +9,7 @@ public class fleche : MonoBehaviour
             if (collision.GetComponent<ennemi>().gotShield == true)
             {
                 Destroy(gameObject);
-                collision.GetComponent<ennemi>().TakeDamage(10);
+                collision.GetComponent<ennemi>().TakeDamage(5);
             }
 
             else
@@ -17,6 +17,12 @@ public class fleche : MonoBehaviour
                 Destroy(gameObject);
                 collision.GetComponent<ennemi>().TakeDamage(25);
             }
+        }
+
+        if (collision.CompareTag("Tengu"))
+        {
+            collision.GetComponent<ennemi>().TakeDamage(10);
+            Destroy(gameObject);
         }
     }
 }

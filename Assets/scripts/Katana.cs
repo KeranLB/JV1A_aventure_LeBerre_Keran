@@ -13,13 +13,18 @@ public class Katana : MonoBehaviour
 
             else
             {
-                collision.GetComponent<ennemi>().TakeDamage(20);
+                collision.GetComponent<ennemi>().TakeDamage(50);
             }
         }
 
         if (collision.CompareTag("Tengu"))
         {
             collision.GetComponent<ennemi>().TakeDamage(5);
+        }
+
+        if (collision.CompareTag("TenguFantom"))
+        {
+            collision.GetComponent<ennemi>().TakeDamage(100);
         }
     }
 }

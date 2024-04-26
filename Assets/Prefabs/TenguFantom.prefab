@@ -186,7 +186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 2}
+  m_AnchoredPosition: {x: 0, y: 0.73}
   m_SizeDelta: {x: 1.3, y: 0.42000154}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3692726875492171933
@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 8811757163046867992}
   - component: {fileID: 2588837076956277755}
   - component: {fileID: 9111689942243642551}
+  - component: {fileID: 8674293341976806105}
   m_Layer: 0
   m_Name: TenguFantom
   m_TagString: Kappa
@@ -391,7 +392,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7668674671271586675}
@@ -439,8 +440,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -2037210147, guid: 8c732681542554b42acabca4521ef1ab, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -482,8 +483,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: -0.16}
+  m_Size: {x: 0.91, y: 0.26}
   m_Direction: 0
 --- !u!50 &2588837076956277755
 Rigidbody2D:
@@ -526,16 +527,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFollowing: 0
   player: {fileID: 0}
-  speed: 1
+  speed: 2
   distanceBetween: 0
-  damage: 1
+  distance: 0
+  direction: {x: 0, y: 0}
+  damage: 0
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 3297265908811903682}
   gotShield: 1
   PrefabFleche: {fileID: 9150738511003664626, guid: f835e6bb2feef7e459cac260e43b298a, type: 3}
-  PrefabPotion: {fileID: 5854490632505903013, guid: e71cc05959e99944ebfacaace7122601, type: 3}
-  PrefabBombe: {fileID: 5300106562604480805, guid: 198610c5aa1827644bc641993fc30e70, type: 3}
+  PrefabPotion: {fileID: 9150738511003664626, guid: f835e6bb2feef7e459cac260e43b298a, type: 3}
+  PrefabBombe: {fileID: 9150738511003664626, guid: f835e6bb2feef7e459cac260e43b298a, type: 3}
+  Menu: {fileID: 0}
+--- !u!95 &8674293341976806105
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4946002745824995182}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a2f3abadd339ec4da59de0fd95672d0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5549275803645528700
 GameObject:
   m_ObjectHideFlags: 0

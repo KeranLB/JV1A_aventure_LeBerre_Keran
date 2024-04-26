@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -9,9 +7,11 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
+    public bool dead;
 
     public bool isHealing;
-
+    private PlayerInventaire Inventaire;
+    private GameObject GameOver;
 
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
@@ -22,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMAxHealth(maxHealth);
+        dead = false;
     }
 
     void Update()
@@ -34,11 +35,13 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            dead = true;
+            GameOver.activeSelf(true);
         }
+
     }
 
-    PlayerInventaire Inventaire;
+
     public void Heal()
     {
         if ((isHealing == true) && (gameObject.GetComponent<PlayerInventaire>().numPotion > 0) && (currentHealth < maxHealth))

@@ -3,23 +3,33 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    public CanvasGroup OptionPanel;
+    public GameObject player;
+    private PlayerController control;
+    private PlayerHealth health;
+    public GameObject Menu;
+    public GameObject End;
 
+    private void Start()
+    {
+        control = player.GetComponent<PlayerController>();
+        health = player.GetComponent<PlayerHealth>();
+    }
+
+    private void Update()
+    {
+        if (control.Pause == true)
+        {
+            Menu.SetActive(true);
+        }
+
+        if (health.dead == true)
+        {
+            End.gameObject.SetActive(true);
+        }
+    }
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void Option()
-    {
-        OptionPanel.alpha = 1;
-        OptionPanel.blocksRaycasts = true;
-    }
-
-    public void Back()
-    {
-        OptionPanel.alpha = 0;
-        OptionPanel.blocksRaycasts = false;
+        SceneManager.LoadSceneAsync("Zone 0");
     }
 
     public void QuitGame()
