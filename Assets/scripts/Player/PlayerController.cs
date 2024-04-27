@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if ((Menu.activeSelf == false) || (GameOver.activeSelf == false) || (GameWin.activeSelf == false))
+        if (Menu.activeSelf == false)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

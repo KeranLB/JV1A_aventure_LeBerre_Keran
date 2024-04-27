@@ -1,3 +1,4 @@
+using Rewired;
 using UnityEngine;
 
 public class Tengu : MonoBehaviour
@@ -7,13 +8,14 @@ public class Tengu : MonoBehaviour
     public ATK atk;
     public GameObject TrigerAtk;
     public GameObject fantom;
-    public GameObject Menus;
     private Vector3 movement;
+    public bool dead;
 
     private void Start()
     {
         ennemi = gameObject.GetComponent<ennemi>();
         atk = TrigerAtk.GetComponent<ATK>();
+        dead = false;
     }
     private void animationMovement()
     {
@@ -52,7 +54,7 @@ public class Tengu : MonoBehaviour
     {
         if (ennemi.currentHealth < 1)
         {
-            Menus.SetActive(true);
+            dead = true;
         }
     }
 }

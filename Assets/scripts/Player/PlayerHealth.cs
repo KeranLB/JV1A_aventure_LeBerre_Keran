@@ -10,13 +10,13 @@ public class PlayerHealth : MonoBehaviour
     public bool dead;
 
     public bool isHealing;
-    private PlayerInventaire Inventaire;
-    private GameObject GameOver;
 
+    /*
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
     [SerializeField] private int numberOfFlashes;
     private SpriteRenderer spriteRend;
+    */
 
     void Start()
     {
@@ -36,7 +36,6 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             dead = true;
-            GameOver.activeSelf(true);
         }
 
     }

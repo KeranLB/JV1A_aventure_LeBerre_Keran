@@ -7,12 +7,17 @@ public class MenuController : MonoBehaviour
     private PlayerController control;
     private PlayerHealth health;
     public GameObject Menu;
-    public GameObject End;
+    public GameObject GameOver;
+    public GameObject Win;
+    public GameObject tengu;
 
     private void Start()
     {
         control = player.GetComponent<PlayerController>();
         health = player.GetComponent<PlayerHealth>();
+        Menu.SetActive(false);
+        GameOver.SetActive(false);
+        Win.SetActive(false);
     }
 
     private void Update()
@@ -22,9 +27,13 @@ public class MenuController : MonoBehaviour
             Menu.SetActive(true);
         }
 
-        if (health.dead == true)
+        else if (health.dead == true)
         {
-            End.gameObject.SetActive(true);
+            GameOver.SetActive(true);
+        }
+        else if (tengu.GetComponent<Tengu>().dead == true)
+        {
+            Win.SetActive(true);
         }
     }
     public void PlayGame()
@@ -35,5 +44,10 @@ public class MenuController : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadSceneAsync("Main Menu");
     }
 }

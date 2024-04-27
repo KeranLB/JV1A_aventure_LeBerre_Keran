@@ -38,7 +38,7 @@ public class ennemi : MonoBehaviour
 
     void Update()
     {
-        if ((Menu.activeSelf == false) || (GameOver.activeSelf == false) || (GameWin.activeSelf == false))
+        if (Menu.activeSelf == false)
         {
             Death();
             if (isFollowing == true)
