@@ -4,7 +4,7 @@ public class Katana : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Kappa"))
+        if ((collision.CompareTag("Kappa")) || (collision.CompareTag("Kappa1")) || (collision.CompareTag("Kappa2")) || (collision.CompareTag("Kappa3")) || (collision.CompareTag("Kappa4")))
         {
             if (collision.GetComponent<ennemi>().gotShield == true)
             {
@@ -22,7 +22,7 @@ public class Katana : MonoBehaviour
             collision.GetComponent<ennemi>().TakeDamage(5);
         }
 
-        if (collision.CompareTag("TenguFantom"))
+        if ((collision.CompareTag("TenguFantom")) || collision.CompareTag("TenguFantom1"))
         {
             collision.GetComponent<ennemi>().TakeDamage(100);
         }

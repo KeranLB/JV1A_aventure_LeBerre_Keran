@@ -531,7 +531,7 @@ MonoBehaviour:
   distanceBetween: 0
   distance: 0
   direction: {x: 0, y: 0}
-  damage: 0
+  damage: 1
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 3297265908811903682}
@@ -540,6 +540,8 @@ MonoBehaviour:
   PrefabPotion: {fileID: 9150738511003664626, guid: f835e6bb2feef7e459cac260e43b298a, type: 3}
   PrefabBombe: {fileID: 9150738511003664626, guid: f835e6bb2feef7e459cac260e43b298a, type: 3}
   Menu: {fileID: 0}
+  GameOver: {fileID: 0}
+  GameWin: {fileID: 0}
 --- !u!95 &8674293341976806105
 Animator:
   serializedVersion: 5

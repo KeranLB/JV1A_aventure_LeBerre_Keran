@@ -4,7 +4,7 @@ public class Bombe : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Kappa"))
+        if ((collision.CompareTag("Kappa")) || (collision.CompareTag("Kappa1")) || (collision.CompareTag("Kappa2")) || (collision.CompareTag("Kappa3")) || (collision.CompareTag("Kappa4")))
         {
             if (collision.GetComponent<ennemi>().gotShield == true)
             {

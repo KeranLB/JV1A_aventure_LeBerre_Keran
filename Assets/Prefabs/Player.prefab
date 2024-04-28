@@ -416,6 +416,8 @@ MonoBehaviour:
   arrowPrefab: {fileID: 5555945091613353478, guid: 3724d3a72348cc44b816f7ceaddbee2f, type: 3}
   bombePrefab: {fileID: 3194227536497796984, guid: df5233a4f7fb69447bbe5ad903401fd4, type: 3}
   Menu: {fileID: 0}
+  GameOver: {fileID: 0}
+  GameWin: {fileID: 0}
   playerId: 0
   shootingRange: 1
   AimRange: 1
@@ -434,13 +436,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f836887dc6fbfd478139a833a6bab12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   currentHealth: 0
   healthBar: {fileID: 0}
   dead: 0
   isHealing: 0
-  iFramesDuration: 1
-  numberOfFlashes: 2
 --- !u!114 &6362907273945943561
 MonoBehaviour:
   m_ObjectHideFlags: 0

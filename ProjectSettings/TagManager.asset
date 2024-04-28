@@ -21,6 +21,11 @@ TagManager:
   - TenguFantom
   - GameOver
   - Win
+  - Kappa1
+  - Kappa2
+  - Kappa3
+  - Kappa4
+  - TenguFantom1
   layers:
   - Default
   - TransparentFX

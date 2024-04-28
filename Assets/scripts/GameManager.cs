@@ -1,10 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject[] objects;
+    public GameObject mainCamera;
+
 
     private void Awake()
     {

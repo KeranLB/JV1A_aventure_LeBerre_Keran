@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class SpawnTengu : MonoBehaviour
 {
+    public string name;
     private void Start()
     {
-        GameObject.FindGameObjectWithTag("Tengu").transform.position = transform.position;
+        GameObject.FindGameObjectWithTag(name).transform.position = transform.position;
     }
 }

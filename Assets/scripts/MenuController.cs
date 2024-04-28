@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ public class MenuController : MonoBehaviour
     public GameObject GameOver;
     public GameObject Win;
     public GameObject tengu;
+    public bool restart;
 
     private void Start()
     {
@@ -18,6 +20,7 @@ public class MenuController : MonoBehaviour
         Menu.SetActive(false);
         GameOver.SetActive(false);
         Win.SetActive(false);
+        restart = false;
     }
 
     private void Update()
@@ -30,10 +33,14 @@ public class MenuController : MonoBehaviour
         else if (health.dead == true)
         {
             GameOver.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else if (tengu.GetComponent<Tengu>().dead == true)
         {
             Win.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
     public void PlayGame()
@@ -41,13 +48,23 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadSceneAsync("Zone 0");
     }
 
+    public void Continue()
+    {
+        control.Pause = false;
+    }
+
     public void QuitGame()
     {
         Application.Quit();
     }
 
-    public void RestartGame()
+    public void useController()
     {
-        SceneManager.LoadSceneAsync("Main Menu");
+        control.useController = true;
+    }
+
+    public void useKeyBoard()
+    {
+        control.useController = false;
     }
 }
